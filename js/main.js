@@ -35,7 +35,7 @@ if (regex.test(text )) {
 
 }
 function vladtionUrl(){
-var regex = /^(www\.)?[a-zA-Z0-9-]+\.(com|net|org)(\/.*)?$/;
+var regex = /^(https:\/\/)?(www\.)?[a-zA-Z0-9-]+\.(com|net|org)(\/.*)?$/;
 var url=siteUrl.value;
 
 
@@ -107,10 +107,10 @@ for (let i = 0; i < siteList.length; i++) {
 
 
 cartona+=`  <tr>
-      <th scope="row">${i}</th>
+      <th scope="row">${i+1}</th>
       <td>${siteList[i].name}</td>
       <td> <a href="https://${siteList[i].url}"><button class="visit-btn" id="visitBtn"><i class="fa-solid fa-eye pe-2"></i>Visit</button></a></td>
-      <td><button onclick="delData()" class="del-btn" id="delBtn"><i class="fa-solid fa-trash-can"></i>Delete</button></td>
+      <td><button onclick="delData(${i})" class="del-btn" id="delBtn"><i class="fa-solid fa-trash-can"></i>Delete</button></td>
     </tr>`
 
 
