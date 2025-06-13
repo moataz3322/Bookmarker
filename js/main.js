@@ -5,7 +5,7 @@ var subBtn = document.getElementById("subBtn")
 
 
 // For validation
-function vladtionName(){
+function validationName(){
 var regex = /^[a-zA-Z]{3,}$/;
 
 var text=siteName.value;
@@ -34,8 +34,9 @@ if (regex.test(text )) {
 }
 
 }
-function vladtionUrl(){
-var regex = /^https:\/\/(www\.)?[a-zA-Z0-9-]+\.(com|net|org)(\/.*)?$/;
+function validationUrl(){
+  
+var regex = /^(www\.)?[a-zA-Z0-9-]+\.(com|net|org)(\/.*)?$/;
 var url=siteUrl.value;
 
 
@@ -76,7 +77,7 @@ if (localStorage.getItem("siteContainer") !== null) {
 // Add site
 function addSite() {
 
-if (vladtionName()&&vladtionUrl()) {
+if (validationName()&&validationUrl()) {
     var site = {
     name: siteName.value,
     url: siteUrl.value,
@@ -84,11 +85,23 @@ if (vladtionName()&&vladtionUrl()) {
 
   siteList.push(site);
 
-  localStorage.setItem("siteContainer", JSON.stringify(siteList));
 
-  displayData()
-  console.log(siteList);
-clearData()
+  // check if value includes https or auto added
+ if (site.url.includes("https://")) {
+   localStorage.setItem("siteContainer", JSON.stringify(siteList));
+ 
+   displayData()
+   console.log(siteList);
+ clearData()
+ }else{
+
+site.url="https://"+siteUrl.value
+
+ localStorage.setItem("siteContainer", JSON.stringify(siteList));
+ 
+   displayData()
+   console.log(siteList);
+ }
 
 
 }
