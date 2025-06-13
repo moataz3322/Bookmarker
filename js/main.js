@@ -83,12 +83,12 @@ if (validationName()&&validationUrl()) {
     url: siteUrl.value,
   };
 
-  siteList.push(site);
-
-
+  
+  
   // check if value includes https or auto added
- if (site.url.includes("https://")) {
-   localStorage.setItem("siteContainer", JSON.stringify(siteList));
+  if (site.url.includes("https://")) {
+    siteList.push(site);
+    localStorage.setItem("siteContainer", JSON.stringify(siteList));
  
    displayData()
    console.log(siteList);
@@ -96,6 +96,7 @@ if (validationName()&&validationUrl()) {
  }else{
 
 site.url="https://"+siteUrl.value
+    siteList.push(site);
 
  localStorage.setItem("siteContainer", JSON.stringify(siteList));
  
