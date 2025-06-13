@@ -36,7 +36,7 @@ if (regex.test(text )) {
 }
 function validationUrl(){
   
-var regex = /^(www\.)?[a-zA-Z0-9-]+\.(com|net|org)(\/.*)?$/;
+var regex = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+\.(com|net|org)(\/.*)?$/;
 var url=siteUrl.value;
 
 
